@@ -1,3 +1,10 @@
+#Index
+
+- [Define region, ad & fd](#define-region-ad--fd)
+- [Difference between ADs and FDs](#difference-between-ads-and-fds)
+- [What is compute in OCI? What are the types of compute available in OCI? and shapes?](#what-is-compute-in-oci-what-are-the-types-of-compute-available-in-oci-and-shapes)
+- [what are different types of scaling available for shapes in OCI](#what-are-different-types-of-scaling-available-for-shapes-in-oci)
+
 # Define region, ad & fd
 
 In **Oracle Cloud Infrastructure (OCI)** , the terms **region** , **availability domain (AD)** , and **fault domain (FD)**  are related to the geographical and logical structuring of OCI resources to ensure high availability, disaster recovery, and fault tolerance. Here's a breakdown of each:1. **Region** : 
@@ -301,3 +308,31 @@ Let's dive deeper into the specifics of some important compute shapes and instan
  
 - **Flexible Shapes** : Tailored to provide custom OCPU and memory configurations.
 
+# what are different types of scaling available for shapes in OCI
+
+In Oracle Cloud Infrastructure (OCI), when it comes to scaling shapes (or compute instances), there are various types of scaling available, depending on the nature of your workloads and resource needs. These include both **vertical scaling**  and **horizontal scaling**  approaches:1. **Vertical Scaling (Scaling Up/Down)** 
+This involves increasing or decreasing the resources of a single compute instance.
+ 
+- **CPU Scaling** : You can change the number of OCPUs (Oracle Cloud Processing Units) allocated to an instance. You can scale up to add more OCPUs or scale down to reduce the number of OCPUs. This is applicable to instances using flexible shapes.
+ 
+- **Memory Scaling** : Flexible shapes also allow you to change the amount of memory (RAM) assigned to an instance.
+ 
+- **Shape Reconfiguration** : If an instance was created using a standard shape (with fixed CPU and memory), you may need to stop the instance and change its shape to another one that has more or fewer resources.
+2. **Horizontal Scaling (Scaling Out/In)** 
+This refers to adding or removing instances to adjust to workload requirements.
+ 
+- **Instance Autoscaling** : OCI provides autoscaling features for compute instances where the number of instances can increase (scale out) or decrease (scale in) automatically, based on defined performance metrics like CPU utilization, memory usage, or custom metrics. This is typically done in a **cluster**  or **instance pool**  configuration.
+ 
+- **Load Balancer Scaling** : To handle increased traffic, you can scale out by adding more instances behind a load balancer, which distributes traffic among them. OCI load balancers also support dynamic scaling to balance traffic across an expanding or shrinking pool of instances.
+3. **Shape Types with Built-in Flexibility** 
+OCI offers different types of shapes for various use cases, and some of them allow dynamic scaling within predefined limits:
+ 
+- **Flexible Shapes** : These shapes (e.g., VM.Standard.E3.Flex) allow you to dynamically allocate the exact number of OCPUs and the amount of memory you need, so you can scale the instance vertically without switching shapes. They offer more flexibility than fixed shapes.
+ 
+- **Bare Metal Instances** : For workloads that require direct hardware access, OCI bare metal instances provide high-performance compute and allow manual scaling, including resizing of storage and networking as needed.
+4. **Autoscaling on Block Storage**  
+- **Block Volume Scaling** : OCI allows scaling of block storage volumes associated with instances. You can dynamically increase the size of your block volumes without downtime to meet storage needs.
+5. **Network Scaling**  
+- **Bandwidth Scaling** : OCI allows dynamic scaling of bandwidth for network resources, including fast adjustments to bandwidth allocation for virtual cloud networks (VCNs) or instances that require more or less network throughput.
+
+These options provide flexibility depending on your application needs, whether you're scaling resources for a single instance or distributing workloads across multiple instances for higher availability and performance.
